@@ -14,7 +14,7 @@ namespace MetasequoiaObject
         public List<MQMaterial> Materials { get; set; }
         public List<MQObject> Objects { get; set; }
 
-        public MetasequoiaObject(string name)
+        public MetasequoiaObject()
         {
             Format = "Text";
             Version = 1.2f;
