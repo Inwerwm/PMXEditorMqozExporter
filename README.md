@@ -1,0 +1,2 @@
+# PMXEditorMqozExporter
+PMXエディター用mpoz形式出力プラグイン
