@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml.Linq;
 
-namespace MetasequoiaObject
+namespace MetasequoiaFileFormat
 {
     public class MetasequoiaObject
     {
@@ -22,6 +22,11 @@ namespace MetasequoiaObject
             MQX = null;
             Materials = new List<MQMaterial>();
             Objects = new List<MQObject>();
+        }
+
+        public void Write(string path)
+        {
+
         }
     }
 

@@ -5,7 +5,7 @@ using System.Text;
 using System.Windows.Forms;
 using PEPlugin;
 using PEPlugin.Pmx;
-using MetasequoiaObject;
+using MetasequoiaFileFormat;
 
 namespace MqozExporter
 {
@@ -22,12 +22,17 @@ namespace MqozExporter
         {
             get
             {
-                return "Zipped Metasequoia Object";
+                return "Export Metasequoia Object Zip";
             }
         }
         public void Export(IPXPmx pmx, string path, IPERunArgs args)
         {
+            MetasequoiaObject mqo = new MetasequoiaObject();
+            mqo.MQX = new MetasequoiaXML();
 
+
+
+            mqo.Write(path);
         }
     }
 }
