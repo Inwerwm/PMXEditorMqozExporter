@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml.Linq;
 
 namespace MetasequoiaObject
 {
@@ -9,16 +10,16 @@ namespace MetasequoiaObject
         public string Format { get; private set; }
         public float Version { get; private set; }
         public Encoding CodePage { get; set; }
-        public string IncludeXML { get; set; }
+        public MetasequoiaXML MQX { get; set; }
         public List<MQMaterial> Materials { get; set; }
         public List<MQObject> Objects { get; set; }
 
-        public MetasequoiaObject()
+        public MetasequoiaObject(string name)
         {
             Format = "Text";
             Version = 1.2f;
             CodePage = Encoding.UTF8;
-            IncludeXML = "";
+            MQX = null;
             Materials = new List<MQMaterial>();
             Objects = new List<MQObject>();
         }
@@ -26,6 +27,23 @@ namespace MetasequoiaObject
 
     public class MetasequoiaXML
     {
+        public XDocument Doc { get; private set; }
+
+        public MetasequoiaXML()
+        {
+            Doc = new XDocument(new XDeclaration("1.0", "UTF-8", null), new XElement("MetasequoiaDocument"));
+        }
+
+        /// <summary>
+        /// プラグインを追加
+        /// </summary>
+        /// <param name="product">プロダクト名</param>
+        /// <param name="id">プラグインID</param>
+        /// <param name="element">保存するXMLエレメント</param>
+        public void Add(ulong product, ulong id, XElement element)
+        {
+            Doc.Element("MetasequoiaDocument").Add(new XElement("Plugin." + product.ToString("X") + "." + id.ToString("X"), element));
+        }
     }
 
     public class MQMaterial
