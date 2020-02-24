@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows.Forms;
 using PEPlugin;
 using PEPlugin.Pmx;
+using MetasequoiaObject;
 
 namespace MqozExporter
 {
